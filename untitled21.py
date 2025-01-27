@@ -48,14 +48,14 @@ def simulate_effect():
     hypertension_status = [0, 1]
 
 def simulate_effect():
-    # قيم المدخلات التي سنحاكيها
+    
     doses = [50, 100, 150, 200, 250, 300]  # الجرعات
     ages = [25, 30, 40, 50, 60, 70]  # الأعمار
     sugar_levels = [90, 100, 110, 120, 130, 140]  # مستويات السكر في الدم
     blood_pressures = [110, 120, 130, 140, 150, 160]  # مستويات ضغط الدم
     hypertension_status = [0, 1]  # حالة ضغط الدم المرتفع (0 = لا, 1 = نعم)
 
-    # لتحليل التأثير على القلب و السكري بناءً على المدخلات المتغيرة
+    
     results = []
 
     for dose in doses:
@@ -63,16 +63,16 @@ def simulate_effect():
             for sugar_level in sugar_levels:
                 for blood_pressure in blood_pressures:
                     for hypertension in hypertension_status:
-                        # مدخلات المستخدم
+                        
                         user_input = np.array([[dose, age, sugar_level, blood_pressure, hypertension]])
                         prediction = model.predict(user_input)
 
-                        # إضافة النتائج
+                        
                         heart_disease_risk = prediction[0][0]
                         diabetes_risk = prediction[0][1]
                         results.append([dose, age, sugar_level, blood_pressure, hypertension, heart_disease_risk, diabetes_risk])
 
-    # تحويل النتائج إلى DataFrame
+    
     simulation_results = pd.DataFrame(results, columns=['Dose', 'Age', 'Sugar_Level', 'Blood_Pressure', 'Hypertension', 'Heart_Disease', 'Diabetes'])
     print("\nنتائج المحاكاة:")
     print(simulation_results)
